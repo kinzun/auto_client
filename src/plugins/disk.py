@@ -1,13 +1,14 @@
-class Disk(object):
+from .base import BasePlugins
 
 
+class Disk(BasePlugins):
 
-    def process(self, handler, hostname):
-        """
-        获取硬盘信息
+    def win(self, handler, hostname):
+        result = handler.cmd('df -h', hostname)
 
-        :return:
-        """
+        return result
+
+    def linux(self, handler, hostname):
         result = handler.cmd('df -h', hostname)
 
         return result

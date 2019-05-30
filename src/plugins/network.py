@@ -1,15 +1,21 @@
-from ..plugins import get_server_info
+from .base import BasePlugins
 
 
-class Network(object):
+class Network(BasePlugins):
 
-    def process(self, handler, hostname):
+    def win(self, handler, hostname):
         """
         获取网卡信息
 
         :return:
         """
 
-        handler.cmd("ifconfig en7", hostname)
+        info = handler.cmd("ifconfig en7", hostname)
 
-        return "网络"
+        return info
+
+    def linux(self, handler, hostname):
+        info = handler.cmd("ifconfig en7", hostname)
+
+        return info
+
