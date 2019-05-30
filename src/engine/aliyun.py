@@ -1,4 +1,7 @@
-class AliyunHandler(object):
+from .base import BaseHandler
+
+
+class AliyunHandler(BaseHandler):
 
     def handler(self):
         '''

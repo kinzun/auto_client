@@ -5,3 +5,19 @@ ENGINE_HANDLERS = {
 }
 
 ENGINE = "agent"
+
+########   SSH 模式 ######3
+
+# 私钥地址
+SSH_PRIVATE_KEY = ""
+SSH_PORT = 22
+SSH_USER = "cmdb"
+
+########   插件  ######3
+
+
+PLUGIN_DICT = {
+    "disk": "src.plugins.disk.Disk",
+    "memory": "src.plugins.memory.Memory",
+    "network": "src.plugins.network.Network",
+}
