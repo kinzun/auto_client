@@ -16,9 +16,8 @@ class AgentHandler(BaseHandler):
         :return:
         '''
 
-        print("agent 模式")
-
         # 调度 plugins.disk / plugins.network
 
         info = get_server_info(self)
-        print('agent', info)
+        print(info)
+        # print('agent', info)

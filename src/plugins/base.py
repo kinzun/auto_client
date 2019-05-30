@@ -1,8 +1,11 @@
 from config import settings
 
 
-
 class BasePlugins(object):
+
+    def __init__(self):
+        self.debug = settings.DEBUG
+        self.base_dir = settings.BASEDIR
 
     def get_os(self):
         '''

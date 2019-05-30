@@ -1,5 +1,6 @@
+import os
 
-
+BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ENGINE_HANDLERS = {
     'agent': 'src.engine.agent.AgentHandler',
@@ -24,3 +25,5 @@ PLUGIN_DICT = {
     "memory": "src.plugins.memory.Memory",
     "network": "src.plugins.network.Network",
 }
+########   插件  ######3
+DEBUG = True
