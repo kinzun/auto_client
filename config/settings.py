@@ -22,9 +22,12 @@ SSH_USER = "cmdb"
 
 
 PLUGIN_DICT = {
-    "disk": "src.plugins.disk.Disk",
+    "basic": "src.plugins.basic.Basic",
+    "cpu": "src.plugins.cpu.Cpu",
     "memory": "src.plugins.memory.Memory",
+    "disk": "src.plugins.disk.Disk",
     "network": "src.plugins.network.Network",
+    "main_board": "src.plugins.main_board.MainBoard",
 }
 ########   插件  ######3
 DEBUG = True
