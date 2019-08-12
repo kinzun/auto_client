@@ -1,8 +1,10 @@
 import os
 import re
+import traceback
 
 from .base import BasePlugins
 from config import settings
+
 
 
 class Disk(BasePlugins):
@@ -13,17 +15,27 @@ class Disk(BasePlugins):
         return result
 
     def linux(self, handler, hostname):
-        if self.debug:
-            with open(os.path.join(self.base_dir, 'files/disk.out'), mode='r')as fd:
-                output = fd.read()
+        result = {"status": True, "error": False, "data": None}
 
-        else:
-            shell_command = "sudo MegaCli  -PDList -aALL"
-            output = handler.cmd(shell_command, hostname)
 
-            # result = handler.cmd('df -h', hostname)
+        try:
+            if self.debug:
+                with open(os.path.join(self.base_dir, 'files/disk.out'), mode='r')as fd:
+                    output = fd.read()
 
-        return self.parse(output)
+            else:
+                shell_command = "sudo MegaCli  -PDList -aALL"
+                output = handler.cmd(shell_command, hostname)
+
+                # result = handler.cmd('df -h', hostname)
+            result["data"] = self.parse(output)
+
+        except Exception as e:
+            msg = traceback.format_exc()
+            result["status"] = False
+            result["error"] = msg
+
+        return result
 
     def parse(self, content):
         """
