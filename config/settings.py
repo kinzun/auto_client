@@ -29,3 +29,7 @@ PLUGIN_DICT = {
 ########   插件  ######3
 DEBUG = True
 ASSET_API = "http://127.0.0.1:8000/cmdb/assets/"
+
+########   日志路径  ######3
+
+LOG_FILE_PATH = os.path.join(BASEDIR, "log", "cmdb.log")

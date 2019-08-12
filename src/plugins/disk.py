@@ -6,6 +6,7 @@ from .base import BasePlugins
 from config import settings
 
 from lib.response import BaseResponse
+from lib.log import logger
 
 
 class Disk(BasePlugins):
@@ -20,7 +21,7 @@ class Disk(BasePlugins):
 
         try:
             if self.debug:
-                with open(os.path.join(self.base_dir, 'files/disk.out'), mode='r')as fd:
+                with open(os.path.join(self.base_dir, 'files/d2isk.out'), mode='r')as fd:
                     output = fd.read()
 
             else:
@@ -34,6 +35,7 @@ class Disk(BasePlugins):
             msg = traceback.format_exc()
             result.status = False
             result.error = msg
+            logger.error(msg)
 
         return result.dict
 

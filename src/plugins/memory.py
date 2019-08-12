@@ -4,6 +4,7 @@ import traceback
 from .base import BasePlugins
 from lib import convert
 from lib.response import BaseResponse
+from lib.log import logger
 
 
 class Memory(BasePlugins):
@@ -37,6 +38,7 @@ class Memory(BasePlugins):
             msg = traceback.format_exc()
             result.status = False
             result.error = msg
+            logger.error(msg)
 
         return result.dict
 
