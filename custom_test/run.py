@@ -16,7 +16,7 @@ def agent(info):
     获取当前服务器的资产信息提交给 api
     :return: responde
     '''
-    url = "http://127.0.0.1:8000/api/asset/"  # 需要加杠
+    url = "http://127.0.0.1:8000/cmdb/api/"  # 需要加杠
     res_msg = requests.post(url=url,
                             data=json.dumps(info).encode("utf-8"),
                             )
@@ -33,7 +33,7 @@ def task(host):
 
 def ssh():
     # 1 获取未采集服务器列表
-    url = "http://127.0.0.1:8000/api/asset/"
+    url = "http://127.0.0.1:8000/cmdb/api/"
     host_list = requests.get(url=url)  # 主机列表
 
     from concurrent.futures import ThreadPoolExecutor

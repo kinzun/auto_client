@@ -17,14 +17,14 @@ class BasePlugins(object):
         platform_ = platform.system()
         return platform_
 
-    def process(self, hander, hostname):
+    def process(self, handler, hostname):
 
         platform_ = self.get_os()
 
         if platform_ == "Linux":
-            return self.linux(hander, hostname)
+            return self.linux(handler, hostname)
         else:
-            return self.linux(hander, hostname)
+            return self.linux(handler, hostname)
 
     def win(self, handler, hostname):
         raise NotImplementedError("win must be Implemented")

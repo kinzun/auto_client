@@ -1,10 +1,9 @@
-from .base import BaseHandler
-from ..plugins import get_server_info
+from .base import SaltandSSHhanders
 
 from config import settings
 
 
-class SSHHandler(BaseHandler):
+class SSHHandler(SaltandSSHhanders):
 
     def cmd(self, command, hostname=None):
         '''
@@ -23,12 +22,3 @@ class SSHHandler(BaseHandler):
         result = stdout.read()
         ssh.close()
         return result
-
-    def handler(self):
-        '''
-        处理 SSH 模式下资产采集
-        :return:
-        '''
-
-        info = get_server_info(self)
-        print('ssh', info)

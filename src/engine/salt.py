@@ -1,9 +1,7 @@
-from .base import BaseHandler
-
-from ..plugins import get_server_info
+from .base import SaltandSSHhanders
 
 
-class SaltHandler(BaseHandler):
+class SaltHandler(SaltandSSHhanders):
 
     def cmd(self, command, hostname=None):
         '''
@@ -16,11 +14,3 @@ class SaltHandler(BaseHandler):
         local = salt.client.LocalClient()
         result = local.cmd(hostname, 'cmd.run', [command])
         return result[hostname]
-
-    def handler(self):
-        '''
-        处理 Salt 模式下资产采集
-        :return:
-        '''
-        print("Salt 模式")
-        print(get_server_info(self),)

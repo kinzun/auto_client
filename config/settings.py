@@ -8,7 +8,8 @@ ENGINE_HANDLERS = {
     'salt': 'src.engine.salt.SaltHandler',
 }
 
-ENGINE = "agent"
+ENGINE = "ssh"
+# ENGINE = "agent"
 
 ########   SSH 模式 ######3
 
@@ -27,3 +28,4 @@ PLUGIN_DICT = {
 }
 ########   插件  ######3
 DEBUG = True
+ASSET_API = "http://127.0.0.1:8000/cmdb/assets/"
