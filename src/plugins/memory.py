@@ -1,7 +1,9 @@
 import os
+import traceback
 
 from .base import BasePlugins
 from lib import convert
+from lib.response import BaseResponse
 
 
 class Memory(BasePlugins):
@@ -18,15 +20,25 @@ class Memory(BasePlugins):
         return result
 
     def linux(self, handler, hostname):
-        if self.debug:
-            with open(os.path.join(self.base_dir, 'files/memory.out'), mode='r')as fd:
-                output = fd.read()
 
-        else:
-            shell_command = "sudo dmidecode  -q -t 17 2>/dev/null"
-            output = handler.cmd(shell_command, hostname)
+        result = BaseResponse()
 
-        return self.parse(output)
+        try:
+            if self.debug:
+                with open(os.path.join(self.base_dir, 'files/memory.out'), mode='r')as fd:
+                    output = fd.read()
+
+            else:
+                shell_command = "sudo dmidecode  -q -t 17 2>/dev/null"
+                output = handler.cmd(shell_command, hostname)
+            result.data = self.parse(output)
+
+        except Exception as e:
+            msg = traceback.format_exc()
+            result.status = False
+            result.error = msg
+
+        return result.dict
 
     def parse(self, content):
         """

@@ -1,6 +1,9 @@
 import os
 import re
+import traceback
+
 from .base import BasePlugins
+from lib.response import BaseResponse
 
 
 class Network(BasePlugins):
@@ -17,13 +20,24 @@ class Network(BasePlugins):
         return info
 
     def linux(self, handler, hostname):
-        if self.debug:
-            output = open(os.path.join(self.base_dir, 'files/nic.out'), 'r').read()
-            interfaces_info = self._interfaces_ip(output)
-        else:
-            interfaces_info = self.linux_interfaces(handler)
-        self.standard(interfaces_info)
-        return interfaces_info
+
+        result = BaseResponse()
+
+        try:
+            if self.debug:
+                output = open(os.path.join(self.base_dir, 'files/nic.out'), 'r').read()
+                interfaces_info = self._interfaces_ip(output)
+            else:
+                interfaces_info = self.linux_interfaces(handler)
+            self.standard(interfaces_info)
+
+            result.data = interfaces_info
+
+        except Exception as e:
+            msg = traceback.format_exc()
+            result.status = False
+            result.error = msg
+        return result.dict
 
     def linux_interfaces(self, handler):
         '''
