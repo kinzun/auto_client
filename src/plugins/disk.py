@@ -5,6 +5,7 @@ import traceback
 from .base import BasePlugins
 from config import settings
 
+from lib.response import BaseResponse
 
 
 class Disk(BasePlugins):
@@ -15,8 +16,7 @@ class Disk(BasePlugins):
         return result
 
     def linux(self, handler, hostname):
-        result = {"status": True, "error": False, "data": None}
-
+        result = BaseResponse()
 
         try:
             if self.debug:
@@ -28,14 +28,14 @@ class Disk(BasePlugins):
                 output = handler.cmd(shell_command, hostname)
 
                 # result = handler.cmd('df -h', hostname)
-            result["data"] = self.parse(output)
+            result.data = self.parse(output)
 
         except Exception as e:
             msg = traceback.format_exc()
-            result["status"] = False
-            result["error"] = msg
+            result.status = False
+            result.error = msg
 
-        return result
+        return result.dict
 
     def parse(self, content):
         """
