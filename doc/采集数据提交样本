@@ -1,0 +1,117 @@
+
+{
+	'basic': {
+		'status': True,
+		'error': False,
+		'data': {
+			'os_platform': 'linux',
+			'os_version': '7.5',
+			'hostname': 'baidu.com'
+		}
+	},
+	'cpu': {
+		'status': True,
+		'error': False,
+		'data': {
+			'cpu_count': 24,
+			'cpu_physical_count': 2,
+			'cpu_model': ' Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz'
+		}
+	},
+	'memory': {
+		'status': True,
+		'error': False,
+		'data': {
+			'DIMM #0': {
+				'capacity': 1024,
+				'slot': 'DIMM #0',
+				'model': 'DRAM',
+				'speed': '667 MHz',
+				'manufacturer': 'Not Specified',
+				'sn': 'Not Specified'
+			},
+			'DIMM #1': {
+				'capacity': 0,
+				'slot': 'DIMM #1',
+				'model': 'DRAM',
+				'speed': '667 MHz',
+				'manufacturer': 'Not Specified',
+				'sn': 'Not Specified'
+			},
+			'DIMM #2': {
+				'capacity': 0,
+				'slot': 'DIMM #2',
+				'model': 'DRAM',
+				'speed': '667 MHz',
+				'manufacturer': 'Not Specified',
+				'sn': 'Not Specified'
+			},
+			'DIMM #3': {
+				'capacity': 0,
+				'slot': 'DIMM #3',
+				'model': 'DRAM',
+				'speed': '667 MHz',
+				'manufacturer': 'Not Specified',
+				'sn': 'Not Specified'
+			},
+			'DIMM #4': {
+				'capacity': 0,
+				'slot': 'DIMM #4',
+				'model': 'DRAM',
+				'speed': '667 MHz',
+				'manufacturer': 'Not Specified',
+				'sn': 'Not Specified'
+			},
+			'DIMM #5': {
+				'capacity': 0,
+				'slot': 'DIMM #5',
+				'model': 'DRAM',
+				'speed': '667 MHz',
+				'manufacturer': 'Not Specified',
+				'sn': 'Not Specified'
+			},
+			'DIMM #6': {
+				'capacity': 0,
+				'slot': 'DIMM #6',
+				'model': 'DRAM',
+				'speed': '667 MHz',
+				'manufacturer': 'Not Specified',
+				'sn': 'Not Specified'
+			},
+			'DIMM #7': {
+				'capacity': 0,
+				'slot': 'DIMM #7',
+				'model': 'DRAM',
+				'speed': '667 MHz',
+				'manufacturer': 'Not Specified',
+				'sn': 'Not Specified'
+			}
+		}
+	},
+	'disk': {
+		'status': False,
+		'error': 'Traceback (most recent call last):\n  File "/Users/toorl/PyProjects/auto_client/src/plugins/disk.py", line 24, in linux\n    with open(os.path.join(self.base_dir, \'files/d2isk.out\'), mode=\'r\')as fd:\nFileNotFoundError: [Errno 2] No such file or directory: \'/Users/toorl/PyProjects/auto_client/files/d2isk.out\'\n',
+		'data': None
+	},
+	'network': {
+		'status': True,
+		'error': False,
+		'data': {
+			'eth0': {
+				'up': True,
+				'hwaddr': '00:1c:42:a5:57:7a',
+				'ipaddrs': '10.211.55.4',
+				'netmask': '255.255.255.0'
+			}
+		}
+	},
+	'main_board': {
+		'status': True,
+		'error': False,
+		'data': {
+			'manufacturer': 'Parallels Software International Inc.',
+			'model': 'Parallels Virtual Platform',
+			'sn': 'Parallels-1A 1B CB 3B 64 66 4B 13 86 B0 86 FF 7E 2B 20 30'
+		}
+	}
+}

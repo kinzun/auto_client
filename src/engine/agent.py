@@ -1,5 +1,7 @@
 import requests
 import json
+import pathlib
+from pathlib import Path
 
 from .base import BaseHandler
 from ..plugins import get_server_info
@@ -23,7 +25,24 @@ class AgentHandler(BaseHandler):
         # 1. 通过调用 get_server_info 网卡 内存 硬盘 ...
 
         info = get_server_info(self)
+
+        # 采集到的服务器信息
+
+        if not Path(settings.CERT_FILE_PATH).exists():
+            info["type"] = "create"
+        else:
+            with open(settings.CERT_FILE_PATH, "r", encoding='utf-8') as f:
+                cert = f.read()
+
+            if cert == info["basic"]['data']['hostname']:
+                # 主机名未更新，汇报给 API ，API 做更新。
+                info["type"] = "update"
+            else:
+                info["cert"] = cert
+                info["type"] = "host_update"
+
         # 2. 发送到 API
+
         r1 = requests.post(
             url=self.asset_api,
             # 可以加头，类型
@@ -33,4 +52,9 @@ class AgentHandler(BaseHandler):
             }
             # data=info
         )
-        print(r1)
+
+        response = r1.json()
+        print(r1.json())
+        if response['status']:
+            with open(settings.CERT_FILE_PATH, 'w', encoding='utf-8') as f:
+                f.write(response['data'])

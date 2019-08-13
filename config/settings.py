@@ -8,8 +8,8 @@ ENGINE_HANDLERS = {
     'salt': 'src.engine.salt.SaltHandler',
 }
 
-ENGINE = "ssh"
-# ENGINE = "agent"
+# ENGINE = "ssh"
+ENGINE = "agent"
 
 ########   SSH 模式 ######3
 
@@ -36,3 +36,7 @@ ASSET_API = "http://127.0.0.1:8000/cmdb/assets/"
 ########   日志路径  ######3
 
 LOG_FILE_PATH = os.path.join(BASEDIR, "log", "cmdb.log")
+
+########   唯一标识路径 ######3
+
+CERT_FILE_PATH = os.path.join(BASEDIR, "config", "cert")

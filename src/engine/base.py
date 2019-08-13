@@ -42,9 +42,15 @@ class SaltandSSHhanders(BaseHandler):
         for hostname in hostname_list:
             pool.submit(self.task, hostname)
 
+
+
+
+
     def task(self, hostname):
         info = get_server_info(self, hostname)
         print(info)
+
+
 
         r1 = requests.post(
             url=self.asset_api,

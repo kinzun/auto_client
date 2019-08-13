@@ -40,7 +40,7 @@ class Basic(BasePlugins):
                 ret = {
                     'os_platform': 'linux',
                     'os_version': '7.5',
-                    'hostname': 'baidu.com'
+                    'hostname': 'c1.com'
                 }
             else:
                 ret = {
