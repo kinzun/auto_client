@@ -26,9 +26,10 @@ class AgentHandler(BaseHandler):
 
         info = get_server_info(self)
 
-        # 采集到的服务器信息
+        # 2. 获取本地文件唯一标示
 
         if not Path(settings.CERT_FILE_PATH).exists():
+            # 新服务器 应该在数据库增加数据。
             info["type"] = "create"
         else:
             with open(settings.CERT_FILE_PATH, "r", encoding='utf-8') as f:
@@ -41,7 +42,7 @@ class AgentHandler(BaseHandler):
                 info["cert"] = cert
                 info["type"] = "host_update"
 
-        # 2. 发送到 API
+        # 3. 发送到 API
 
         r1 = requests.post(
             url=self.asset_api,
@@ -55,6 +56,7 @@ class AgentHandler(BaseHandler):
 
         response = r1.json()
         print(r1.json())
+        # 4. 唯一标识更新
         if response['status']:
             with open(settings.CERT_FILE_PATH, 'w', encoding='utf-8') as f:
                 f.write(response['data'])

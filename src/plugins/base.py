@@ -26,8 +26,6 @@ class BasePlugins(object):
         else:
             return self.linux(handler, hostname)
 
-
-
     def win(self, handler, hostname):
         raise NotImplementedError("win must be Implemented")
 
