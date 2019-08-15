@@ -21,7 +21,7 @@ class Disk(BasePlugins):
 
         try:
             if self.debug:
-                with open(os.path.join(self.base_dir, 'files/d2isk.out'), mode='r')as fd:
+                with open(os.path.join(self.base_dir, 'files/disk.out'), mode='r')as fd:
                     output = fd.read()
 
             else:

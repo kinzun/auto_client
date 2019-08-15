@@ -25,4 +25,6 @@ def get_server_info(handler, hostname=None):
 
     # {'disk':'硬盘'，'memory':'内存','network':网卡}
 
+
+
     return info

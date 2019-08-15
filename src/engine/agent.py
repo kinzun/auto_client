@@ -7,6 +7,8 @@ from .base import BaseHandler
 from ..plugins import get_server_info
 
 from config import settings
+from lib.auth import gen_sign
+from lib.security import encrypt
 
 
 class AgentHandler(BaseHandler):

@@ -27,11 +27,12 @@ PLUGIN_DICT = {
     "memory": "src.plugins.memory.Memory",
     "disk": "src.plugins.disk.Disk",
     "network": "src.plugins.network.Network",
-    "main_board": "src.plugins.main_board.MainBoard",
+    "board": "src.plugins.main_board.MainBoard",
 }
 ########   插件  ######3
 DEBUG = True
-ASSET_API = "http://127.0.0.1:8000/cmdb/assets/"
+# ASSET_API = "http://127.0.0.1:8000/cmdb/assets/"
+ASSET_API = "http://127.0.0.1:8000/api/asset/"
 
 ########   日志路径  ######3
 
@@ -40,3 +41,9 @@ LOG_FILE_PATH = os.path.join(BASEDIR, "log", "cmdb.log")
 ########   唯一标识路径 ######3
 
 CERT_FILE_PATH = os.path.join(BASEDIR, "config", "cert")
+
+# URL 认证 key
+URL_AUTH_KEY = '60xXhoPGZ39z'
+
+# 公钥
+PUB_KEY = ""
