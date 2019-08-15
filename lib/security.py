@@ -16,8 +16,8 @@ def encrypt(value_bytes):
     data_list = []
     # for i in range(0,len(value_bytes),117):
     #     chunk = value_bytes[i:i+117]
-    # for i in range(0, len(value_bytes), 245):
-    #     chunk = value_bytes[i:i + 245]
+    for i in range(0, len(value_bytes), 245):
+        chunk = value_bytes[i:i + 245]
         result = rsa.encrypt(chunk, pk)
         data_list.append(result)
 

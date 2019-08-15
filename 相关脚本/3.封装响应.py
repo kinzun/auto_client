@@ -9,7 +9,7 @@ except Exception as e:
 
 print(result)
 
-class BaseResponse(object):
+class (object):
     def __init__(self):
         self.status = True
         self.error = None
@@ -19,7 +19,7 @@ class BaseResponse(object):
     def dict(self):
         return self.__dict__
 
-result = BaseResponse()
+result = ()
 try:
     result.status = False
 except Exception as e:

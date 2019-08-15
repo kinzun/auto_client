@@ -1,3 +1,5 @@
+import time
+
 import requests
 import json
 import pathlib
@@ -46,19 +48,24 @@ class AgentHandler(BaseHandler):
 
         # 3. 发送到 API
 
+        ctime = int(time.time() * 1000)
+
         r1 = requests.post(
             url=self.asset_api,
+
+            params={'sign': gen_sign(ctime), 'ctime': ctime},
             # 可以加头，类型
-            data=json.dumps(info).encode('utf-8'),
+            data=encrypt(json.dumps(info).encode('utf-8')),
+
             headers={
                 'Content-Type': 'application/json'
             }
-            # data=info
         )
+        print(r1)
 
-        response = r1.json()
-        print(r1.json())
+        # response = r1.json()
+        # print(r1.json())
         # 4. 唯一标识更新
-        if response['status']:
-            with open(settings.CERT_FILE_PATH, 'w', encoding='utf-8') as f:
-                f.write(response['data'])
+        # if response['status']:
+        #     with open(settings.CERT_FILE_PATH, 'w', encoding='utf-8') as f:
+        #         f.write(response['data'])
