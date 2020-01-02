@@ -32,6 +32,7 @@ PLUGIN_DICT = {
 ########   插件  ######3
 DEBUG = True
 # ASSET_API = "http://127.0.0.1:8000/cmdb/assets/"
+# 提交的地址
 ASSET_API = "http://127.0.0.1:8000/api/asset/"
 
 ########   日志路径  ######3

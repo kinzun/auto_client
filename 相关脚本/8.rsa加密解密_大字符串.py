@@ -21,36 +21,37 @@ print(priv_key_code)
 
 #
 # # # ######### 2. 加密 #########
-# def encrypt(pub_key_code,value):
-#     key_str = base64.standard_b64decode(pub_key_code)
-#     pk = rsa.PublicKey.load_pkcs1(key_str)
-#     value_bytes = value.encode('utf-8')
-#     data_list = []
-#     for i in range(0,len(value_bytes),117):
-#         chunk = value_bytes[i:i+117]
-#         result = rsa.encrypt(chunk, pk)
-#         data_list.append(result)
+def encrypt(pub_key_code,value):
+    key_str = base64.standard_b64decode(pub_key_code)
+    pk = rsa.PublicKey.load_pkcs1(key_str)
+    value_bytes = value.encode('utf-8')
+    data_list = []
+    for i in range(0,len(value_bytes),117):
+        chunk = value_bytes[i:i+117]
+        result = rsa.encrypt(chunk, pk)
+        data_list.append(result)
+
+    return b''.join(data_list)
+
+
+data = encrypt(pub_key_code,'zff'*1000)
+print(len(data),data)
 #
-#     return b''.join(data_list)
-#
-#
-# data = encrypt(pub_key_code,'zff'*1000)
-# print(len(data),data)
-#
-# # # ######### 3. 解密 #########
-# def decrypt(priv_key_code,bytes_value):
-#     key_str = base64.standard_b64decode(priv_key_code)
-#     pk = rsa.PrivateKey.load_pkcs1(key_str)
-#     result = []
-#     for i in range(0,len(bytes_value),128):
-#         chunk = bytes_value[i:i+128]
-#         val = rsa.decrypt(chunk, pk)
-#         result.append(val)
-#     return b''.join(result)
-#
-# origin = decrypt(priv_key_code,data)
-# origin_str = origin.decode('utf-8')
-# print(origin_str)
+# # ######### 3. 解密 #########
+
+def decrypt(priv_key_code,bytes_value):
+    key_str = base64.standard_b64decode(priv_key_code)
+    pk = rsa.PrivateKey.load_pkcs1(key_str)
+    result = []
+    for i in range(0,len(bytes_value),128):
+        chunk = bytes_value[i:i+128]
+        val = rsa.decrypt(chunk, pk)
+        result.append(val)
+    return b''.join(result)
+
+origin = decrypt(priv_key_code,data)
+origin_str = origin.decode('utf-8')
+print(origin_str)
 
 
 #

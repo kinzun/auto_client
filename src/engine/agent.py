@@ -61,6 +61,9 @@ class AgentHandler(BaseHandler):
                 'Content-Type': 'application/json'
             }
         )
+        print(info)
+
+
         print(r1)
 
         # response = r1.json()

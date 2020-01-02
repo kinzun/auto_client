@@ -10,6 +10,8 @@ def encrypt(value_bytes):
     rsa加密
     :param value: 要加密的字节
     :return: 加密后的字节密文
+    1024 117
+    2048 245
     """
     key_str = base64.standard_b64decode(settings.PUB_KEY)
     pk = rsa.PublicKey.load_pkcs1(key_str)

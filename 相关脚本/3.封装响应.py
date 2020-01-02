@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-result = {'status':True,'error':None,'data':None}
+result = {'status': True, 'error': None, 'data': None}
 try:
     result['status'] = True
 except Exception as e:
@@ -9,7 +9,8 @@ except Exception as e:
 
 print(result)
 
-class (object):
+
+class BaseResponse(object):
     def __init__(self):
         self.status = True
         self.error = None
@@ -19,10 +20,10 @@ class (object):
     def dict(self):
         return self.__dict__
 
-result = ()
+
+result = BaseResponse()
 try:
-    result.status = False
+    result.status = "234"
 except Exception as e:
     pass
 print(result.dict)
-
